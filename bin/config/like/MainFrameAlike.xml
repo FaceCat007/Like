@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="facecat">
+  <head>
+  </head>
+  <body>
+    <div type="splitlayout" name="divMain" layoutstyle="toptobottom" candragsplitter="true" dock="fill" size="400,400" splitterposition="100,0" bordercolor="none">
+      <div  bordercolor="none" backcolor="none" padding="5,5,5,5">
+        <div location="0,0" bordercolor="none" dock="fill" backcolor="-200000000163">
+          <input type="custom" cid="ribbonbutton2" name="btnStart" text="全面相似对比" location="19,13" size="230,39" font="Default,16" />
+          <label name="lblStock" text="股票1:股票2" location="259,23" size="120,33" font="Default,18" />
+          <input type="checkbox" name="cbNext" text="显示后续K线" location="368,65" size="104,17" />
+          <input type="range" name="spinM" maximum="10000" location="172,64" size="48,20" textalign="Right" value="40" />
+          <label name="Label3" text="参数M：" location="125,67" size="51,15" />
+          <label name="Label4" text="参数N：" location="18,66" size="50,17" />
+          <input type="range" name="spinN" location="67,64" size="46,20" textalign="Right" maximum="10000" value="5" />
+          <input type="range" name="spinThreads" maximum="10000" location="298,64" size="48,20" textalign="Right" value="20" />
+          <label name="Label5" text="线程数：" location="243,67" size="54,15" />
+          <div type="groupbox" name="GroupBox" text="按幅度选K线" location="702,8" size="364,83" bordercolor="-200000000193">
+            <label name="Label2" text="涨跌幅：" location="18,20" size="60,17" />
+            <input type="range" name="spinRangeMin" location="71,16" size="51,20" step="0.01" minimum="-100" text="5.00" digit="2" />
+            <label name="Label6" text="%" location="127,19" size="16,16" />
+            <label name="Label7" text="到" location="148,19" size="60,17" />
+            <input type="range" name="spinSwingDown" location="236,52" size="63,20" step="0.01" minimum="0" text="100.00" digit="2" value="100" maximum="100" />
+            <label name="Label8" text="%" location="303,55" size="16,16" />
+            <label name="Label9" text="上振限制" location="18,55" size="60,17" />
+            <label name="Label10" text="下振限制" location="169,56" size="87,17" />
+            <input type="range" name="spinRangeMax" location="176,17" size="51,20" step="0.01" minimum="0" text="5.1" digit="2" />
+            <input type="range" name="spinSwingUp" location="81,52" size="62,20" step="0.01" minimum="0" text="100.00" digit="2" />
+            <label name="Label11" text="%" location="232,19" size="16,16" />
+            <label name="Label12" text="%" location="146,55" size="16,16" />
+            <input type="custom" cid="ribbonbutton2" name="btnSearch" text="搜索" location="255,15" size="94,25" font="Default,14" />
+          </div>
+        </div>
+      </div>
+      <div type="splitlayout" name="divChart" layoutstyle="lefttoright" candragsplitter="true" size="400,400" splitterposition="210,0" bordercolor="none" backcolor="none">
+        <div  bordercolor="none" backcolor="none" padding="5,5,5,5">
+          <div type="tab" name="tabCodes" selectedindex="0" bordercolor="none" backcolor="-200000000163" dock="fill">
+            <div type="tabpage" text="相似K线" bordercolor="none" backcolor="none">
+              <div type="splitlayout" name="divCodes" layoutstyle="toptobottom" candragsplitter="true" dock="fill" size="400,400" splitterposition="0,50,400,50" bordercolor="none" backcolor="none">
+                <div bordercolor="none" backcolor="none">
+                  <label name="Label" text="过滤代码：" location="6,15" size="73,17" />
+                  <input type="text" name="txtCode" location="74,12" size="112,20" text="" />
+                </div>
+                <div type="splitlayout" name="divTable" layoutstyle="toptobottom" candragsplitter="true" size="400,400" splitmode="percentsize" splitterposition="0,200,400,200" bordercolor="none" backcolor="none">
+                  <table name="tableCodes" bordercolor="none" gridlinecolor="none" backcolor="none">
+                    <tr>
+                      <th text="股票代码" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                      <th text="最高得分" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                    </tr>
+                  </table>
+                  <table name="tableResults" bordercolor="none" gridlinecolor="none" backcolor="none">
+                    <tr>
+                      <th text="得分" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                      <th text="相似代码" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div type="tabpage" text="模拟K线" bordercolor="none" backcolor="none">
+              <div type="splitlayout" name="divCodes2" layoutstyle="toptobottom" candragsplitter="true" dock="fill" size="400,400" splitterposition="0,50,400,50" bordercolor="none" backcolor="none">
+                <div bordercolor="none" backcolor="none">
+                  <label name="Label" text="过滤代码：" location="6,15" size="73,17" />
+                  <input type="text" name="txtCode2" location="74,12" size="112,20" text="" />
+                </div>
+                <table name="tableCodes2" bordercolor="none" gridlinecolor="none" backcolor="none">
+                  <tr>
+                    <th text="股票代码" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                    <th text="涨跌幅" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                    <th text="起始" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                    <th text="结束" width="100" backcolor="-200000000193" bordercolor="-200000000108" textcolor="-200000000102"/>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div  bordercolor="none" backcolor="none" padding="5,5,5,5">
+          <div type="tab" name="tabChart" selectedindex="0" bordercolor="none" backcolor="-200000000163" dock="fill">
+            <div type="tabpage" text="相似K线" bordercolor="none" backcolor="none">
+              <div type="splitlayout" name="divChart" dock="fill" layoutstyle="toptobottom" candragsplitter="true" size="400,400" splitmode="percentsize" splitterposition="0,200,400,200" location="0,0" bordercolor="none" backcolor="none">
+                <input type="custom" cid="chartex" name="chartLeft" backcolor="none" bordercolor="none">
+                  <chartdiv VerticalPercent="60" />
+                  <chartdiv VerticalPercent="40" />
+                </input>
+                <input type="custom" cid="chartex" name="chartRight" backcolor="none" bordercolor="none">
+                  <chartdiv VerticalPercent="60" />
+                  <chartdiv VerticalPercent="40" />
+                </input>
+              </div>
+            </div>
+            <div type="tabpage" text="选择区间" bordercolor="none" backcolor="none">
+              <input type="custom" cid="chartex" name="chartScope" dock="fill" backcolor="none" bordercolor="none">
+                <chartdiv VerticalPercent="60" />
+                <chartdiv VerticalPercent="40" />
+              </input>
+            </div>
+            <div type="tabpage" text="AI画线" bordercolor="none" backcolor="none">
+              <div name="divGraph" dock="fill" bordercolor="none" backcolor="none">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
