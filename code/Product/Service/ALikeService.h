@@ -289,7 +289,11 @@ namespace FaceCat{
 		*/ 
 		virtual String startSandBox(int m, vector<LikeDataInfo> *likeDataInfos);
 	public:
-		//获取数据
+		/*
+		* 获取数据
+		* @param code 代码
+		* @param likeDataInfos 数据
+		*/
 		bool getData(const String& code, vector<LikeDataInfo> *likeDataInfos);
 		/*
 		* 加载数据step1
@@ -297,10 +301,14 @@ namespace FaceCat{
 		void loadDatas();
 		/*
 		* 加载数据step2
+		* @param startIndex 索引
 		*/
 		void loadDatas2(int startIndex);
 		/*
 		* 加载数据step3
+		* @param data 数据
+		* @param datasSize 数据长度
+		* @param startIndex 开始索引
 		*/
 		void loadDatas3(SecurityHistoryData *data, int datasSize, int startIndex);
 	public:
