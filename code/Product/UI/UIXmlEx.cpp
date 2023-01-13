@@ -4,7 +4,6 @@
 #include "RibbonButton2.h"
 #include "WindowEx.h"
 #include "WindowButton.h"
-#include "..\\Script\\FaceCatScript.h"
 #include "..\\Service\\DataCenter.h"
 #include "LikeMainFrame.h"
 
@@ -165,97 +164,6 @@ namespace FaceCat{
 		m_native->setScaleSize(scaleSize);
 		m_native->update();
 		m_native->invalidate();
-	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    void WindowXmlEx::callTouchEvent(String eventName, Object sender, FCTouchInfo touchInfo, Object invoke){
-		if (touchInfo.m_firstTouch && touchInfo.m_clicks == 1){
-            FCView *control = (FCView*)sender;
-            if(getWindow() && control == getWindow()->getCloseButton()){
-                close();
-            }
-        }
-	}
-
-	void WindowXmlEx::callInvokeEvent(String eventName, Object sender, Object args, Object invoke){
-		onInvoke(args);
-	}
-    
-    WindowXmlEx::WindowXmlEx(){
-		m_isClosing = false;
-		m_isWinForm = false;
-        m_native = 0;
-        m_window = 0;
-		m_winForm = 0;
-	}
-    
-	WindowXmlEx::~WindowXmlEx(){
-		if(m_window){
-			delete m_window;
-			m_window = 0;
-		}
-        m_native = 0;
-		m_winForm = 0;
-	}
-
-	bool WindowXmlEx::isWinForm(){
-		return m_isWinForm;
-	}
-
-	void WindowXmlEx::setIsWinForm(bool isWinForm){
-		m_isWinForm = isWinForm;
-	}
-    
-    WindowEx* WindowXmlEx::getWindow(){
-        return m_window;
-    }
-    
-	void WindowXmlEx::close(){
-		m_isClosing = true;
-        m_window->invoke((void*)-10000);
-	}
-    
-    void WindowXmlEx::load(FCNative *native, String xmlName, String windowName){
-        setNative(native);
-        m_native = native;
-        string appPath = DataCenter::getAppPath();
-        String wAppPath = FCTran::stringToString(appPath);
-        String xmlPath = wAppPath + L"\\config\\" + xmlName + L".xml";
-        setScript(new FaceCatScript(this));
-        loadFile(xmlPath, 0);
-        m_window = dynamic_cast<WindowEx*>(findView(windowName));
-        m_window->addEvent((FCInvokeEventCallBack*)this, FCEventID_Invoke, this);
-    }
-    
-    void WindowXmlEx::onInvoke(void *args){
-        int state = (int)args;
-        if (state == -10000){
-			if(m_window){
-				m_window->close();
-			}
-			m_native->m_draggingView = 0;
-			m_native->m_focusedView = 0;
-			m_native->m_touchDownView = 0;
-			m_native->m_touchMoveView = 0;
-			FCNative *native = m_native;
-            native->invalidate();
-			delete this;
-        }
-    }
-    
-	void WindowXmlEx::show(){
-		FCPoint location ={-m_window->getWidth(), -m_window->getHeight()};
-		m_window->setLocation(location);
-		m_window->animateShow(false);
-		m_window->invalidate();
-	}
-
-	void WindowXmlEx::showDialog(){
-		FCPoint location ={-m_window->getWidth(), -m_window->getHeight()};
-		m_window->setLocation(location);
-		m_window->animateShow(true);
-		m_window->invalidate();
 	}
 
 	void FCGridRowEx::onPaint(FCPaint *paint, const FCRect& clipRect, bool isAlternate){

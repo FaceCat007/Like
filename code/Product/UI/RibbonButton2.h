@@ -9,13 +9,25 @@
 #include "FCDraw.h"
 #include "GdiPlusPaintEx.h"
 
-//透明按钮
+/*
+*透明按钮
+*/
 class RibbonButton2 : public FCButton{
 public:
+	/*
+	* 构造函数
+	*/
 	RibbonButton2();
+	/*
+	* 析构函数
+	*/
 	virtual ~RibbonButton2();
 public:
-	//重绘背景色方法
+	/*
+	* 重绘方法
+	* @param paint 绘图对象
+	* @param clipRect 裁剪区域
+	*/
 	virtual void onPaint(FCPaint *paint, const FCRect& clipRect);
 };
 #endif

@@ -4,7 +4,6 @@
 #include "Product\\UI\\GdiPlusPaintEx.h"
 #include "Product\\UI\\UIXmlEx.h"
 #include "Product\\UI\\WindowEx.h"
-#include "Product\\Script\FaceCatScript.h"
 #include "Product\\Service\\DataCenter.h"
 
 LikeMainFrame *m_xml2 = 0;
@@ -172,9 +171,6 @@ extern "C" __declspec(dllexport) int callFunction(const char *cmd){
 
 extern "C" __declspec(dllexport) int startCloudPaint(){
 	GdiPlusPaintEx *gdiPlusPaintEx = (GdiPlusPaintEx*)m_native2->getPaint();
-	gdiPlusPaintEx->m_useCloud = true;
-	gdiPlusPaintEx->m_cloudInfos.clear();
-	gdiPlusPaintEx->m_startTime = ::GetTickCount();
 	m_host2->setAllowPartialPaint(false);
 	string cachePath = FCTran::getAppPath() + "\\data\\cache\\temp.nss";
 	if(FCFile::isFileExist(cachePath.c_str())){
@@ -185,22 +181,7 @@ extern "C" __declspec(dllexport) int startCloudPaint(){
 
 extern "C" __declspec(dllexport) int endCloudPaint(){
 	GdiPlusPaintEx *gdiPlusPaintEx = (GdiPlusPaintEx*)m_native2->getPaint();
-	String lastStr;
-	String cachePath = FCTran::stringToString(FCTran::getAppPath() + "\\data\\cache\\temp.nss");
-	for(int i = 0; i < (int)gdiPlusPaintEx->m_cloudInfos.size(); i++){
-		CloudInfo &ci = gdiPlusPaintEx->m_cloudInfos[i];
-		String str = ci.m_type + L"¡ò" + ci.m_color + L"¡ò" + ci.m_font + L"¡ò" +
-			ci.m_str + L"¡ò"+ FCTran::intToStr(ci.m_lineWidth) + L"¡ò" + 
-			FCTran::intToStr(ci.m_param1) + L"¡ò" + FCTran::intToStr(ci.m_param2)
-			+ L"¡ò" + FCTran::intToStr(ci.m_param3) + L"¡ò" + FCTran::intToStr(ci.m_param4) + L"¨‘";
-		if(lastStr != str){
-			FCFile::append(cachePath.c_str(), str);
-		}
-		lastStr = str;
-	}
 	m_host2->setAllowPartialPaint(true);
-	gdiPlusPaintEx->m_useCloud = false;
-	gdiPlusPaintEx->m_cloudInfos.clear();
 	return 0;
 }
 

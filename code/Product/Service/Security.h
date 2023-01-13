@@ -6,7 +6,6 @@
 #define __SECURITY_H__
 #pragma once
 #include "..\\..\\stdafx.h"
-#include "..\\..\\CStr.h"
 
 static String CLOSE = L"CLOSE";
 static String OPEN = L"OPEN";
@@ -22,27 +21,33 @@ static int LOW_INDEX = 3;
 static int VOL_INDEX = 4;
 static int AMOUNT_INDEX = 5;
 
+/*
+* 码表
+*/
 class Security{
 public:
 	Security();
-	String m_code;
-	String m_name;
-	String m_pingyin;
-	int m_status;
-	string m_sCode;
-	int m_type;
+	String m_code; .//代码
+	String m_name; //名称
+	String m_pingyin; //拼音
+	int m_status; //状态
+	string m_sCode;  //代码扩展
+	int m_type; //类型
 };
 
+/*
+* 历史数据
+*/
 class SecurityData{
 public:
 	SecurityData();
-	double m_date;
-	double m_open;
-	double m_high;
-	double m_low;
-	double m_close;
-	double m_volume;
-	double m_amount;
+	double m_date; //日期
+	double m_open; //开盘价
+	double m_high; //最高价
+	double m_low; //最低价
+	double m_close; //收盘价
+	double m_volume; //成交量
+	double m_amount; //成交额
 	void copy(SecurityData *data){
 		m_date = data->m_date;
 		m_open = data->m_open;
@@ -54,44 +59,52 @@ public:
 	}
 };
 
+
+/*
+* 最新数据
+*/
 class SecurityLatestData{
 public:
 	SecurityLatestData();
-	double m_amount;
-    int m_buyVolume1;
-    int m_buyVolume2;
-    int m_buyVolume3;
-    int m_buyVolume4;
-    int m_buyVolume5;
-    double m_buyPrice1;
-    double m_buyPrice2;
-    double m_buyPrice3;
-    double m_buyPrice4;
-    double m_buyPrice5;
-    double m_close;
-    double m_date;
-    double m_high;
-	int m_innerVol;
-    double m_lastClose;
-    double m_low;
-    double m_open;
-	double m_openInterest;
-	int m_outerVol;
-    String m_securityCode;
-    int m_sellVolume1;
-    int m_sellVolume2;
-    int m_sellVolume3;
-    int m_sellVolume4;
-    int m_sellVolume5;
-    double m_sellPrice1;
-    double m_sellPrice2;
-    double m_sellPrice3;
-    double m_sellPrice4;
-    double m_sellPrice5;
-	double m_settlePrice;
-	double m_turnoverRate;
-    double m_volume;
+	double m_amount; //成交额
+    int m_buyVolume1; //买一量
+    int m_buyVolume2; //买二量
+    int m_buyVolume3; //买三量
+    int m_buyVolume4; //买四量
+    int m_buyVolume5; //买五量
+    double m_buyPrice1; //买一价
+    double m_buyPrice2; //买二价
+    double m_buyPrice3; //买三价
+    double m_buyPrice4; //买四价
+    double m_buyPrice5; //买五价
+    double m_close; //收盘价
+    double m_date; //日期
+    double m_high; //最高价
+	int m_innerVol; //内盘
+    double m_lastClose; //上次收盘价
+    double m_low; //最低价
+    double m_open; //开盘价
+	double m_openInterest; //持仓量
+	int m_outerVol; //外盘
+    String m_securityCode; //代码
+    int m_sellVolume1; //卖一量
+    int m_sellVolume2; //卖二量
+    int m_sellVolume3; //卖三量
+    int m_sellVolume4; //卖四量
+    int m_sellVolume5; //卖五量
+    double m_sellPrice1; //卖一价
+    double m_sellPrice2; //卖二价
+    double m_sellPrice3; //卖三价
+    double m_sellPrice4; //卖四价
+    double m_sellPrice5; //卖五价
+	double m_settlePrice; //结算价
+	double m_turnoverRate; //换手率
+    double m_volume; //成交量
 
+	/*
+	* 拷贝数据
+	* @param data 数据
+	*/
 	void copy(SecurityLatestData *data){
 		if (!data) return;
         m_amount = data->m_amount;
@@ -130,6 +143,10 @@ public:
         m_volume = data->m_volume;
 	}
 
+	/*
+	* 数据是否相等
+	* @param data 数据
+	*/
 	bool equal(SecurityLatestData *data){
 		if (!data) return false;
         if (m_amount == data->m_amount

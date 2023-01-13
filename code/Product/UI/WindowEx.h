@@ -15,7 +15,9 @@ enum WindowStateA{
     WindowStateA_Normal
 };
 
-//自定义窗体
+/*
+* 自定义窗体
+*/
 class WindowEx : public FCWindow, public FCTouchEventCallBack{
 private:
     int m_animateDirection;
@@ -34,44 +36,84 @@ private:
 private:
     virtual void callTouchEvent(String eventName, Object sender, FCTouchInfo touchInfo, Object invoke);
 public:
+	/*
+	* 构造函数
+	*/
     WindowEx();
+	/*
+	* 析构函数
+	*/
     virtual ~WindowEx();
-    //是否动画
+    /*
+	*是否动画
+	*/
     bool isAnimateMoving();
-    //关闭按钮
+    /*
+	* 关闭按钮
+	*/
     WindowButton* getCloseButton();
     void setCloseButton(WindowButton* closeButton);
-    //是否子窗体
+    /*
+	* 是否子窗体
+	*/
     bool isChildWindow();
     void setChildWindow(bool isChildWindow);
-    //最大化按钮
+    /*
+	* 最大化按钮
+	*/
     WindowButton* getMaxOrRestoreButton();
     void setMaxOrRestoreButton(WindowButton *maxOrRestoreButton);
-    //最小化按钮
+    /*
+	* 最小化按钮
+	*/ 
     WindowButton* getMinButton();
     void setMinButton(WindowButton *minButton);
-	//是否使用动画
+	/*
+	* 是否使用动画
+	*/
 	bool useAnimation();
 	void setUseAnimation(bool useAnimation);
-    //窗体状态
+    /*
+	* 窗体状态
+	*/
     WindowStateA getWindowState();
     void setWindowState(WindowStateA windowState);
 public:
-    //动画显示
+    /*
+	* 动画显示
+	* @param showDialog 是否显示模态
+	*/
     void animateShow(bool showDialog);
-    //最大化
+    /*
+	* 最大化
+	*/
     void maxOrRestore();
-    //最小化
+    /*
+	* 最小化
+	*/
     void minWindow();
-    //控件添加方法
+    /*
+	* 控件添加方法
+	*/
     virtual void onAdd();
-    //拖动控件开始方法
+    /*
+	* 拖动控件开始方法
+	* @param startOffset 偏移量
+	*/
     virtual void onDragReady(FCPoint *startOffset);
-    //重绘背景方法
+    /*
+	* 重绘背景方法
+	* @param paint 绘图对象
+	* @param clipRect 裁剪区域
+	*/
     virtual void onPaintBackground(FCPaint *paint, const FCRect& clipRect);
-	//秒表方法
+	/*
+	* 秒表方法
+	*/
 	virtual void onTimer(int timerID);
-    //控件布局更新方法
+    /*
+	*控件布局更新方法
+	*/
     virtual void update();
 };
 #endif

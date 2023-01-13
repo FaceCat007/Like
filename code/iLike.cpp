@@ -5,7 +5,6 @@
 #include "Product\\UI\\GdiPlusPaintEx.h"
 #include "Product\\UI\\UIXmlEx.h"
 #include "Product\\UI\\WindowEx.h"
-#include "Product\\Script\FaceCatScript.h"
 #include "Product\\Service\\DataCenter.h"
 //#include "Product\\Service\\UpdateService.h"
 //#ifndef ULONG_PTR  
@@ -37,19 +36,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 	std::locale::global(std::locale(""));
-	//UpdateService updateService;
-	//if(updateService.NeedUpdate())
-	//{
-	//	int result = MessageBox(0, L"发现新版本，是否立即进行更新？", L"提示", MB_OKCANCEL);
-	//	if(result == 1)
-	//	{
-	//		updateService.StartUpdate();
-	//		while(1)
-	//		{
-	//			::Sleep(1);
-	//		}
-	//	}
-	//}
 	MSG msg;
 	CoInitialize(0);
 	GdiplusStartupInput gdiplusStartupInput;
@@ -149,12 +135,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	if(m_type == 0){
 		string filePath = DataCenter::getAppPath() + "\\config\\like\\MainFrameAlike.xml";
 		String wFilePath = FCTran::stringToString(filePath);
-		m_mainFrame->setScript(new FaceCatScript(m_mainFrame));
 		m_mainFrame->load(wFilePath);
 	}else if(m_type == 1){
 		//string filePath = DataCenter::getAppPath() + "\\config\\LikeMainFrame.xml";
 		//String wFilePath = FCTran::stringToString(filePath);
-		//m_aniMainFrame->setScript(new FaceCatScript(m_mainFrame));
 		//m_aniMainFrame->load(wFilePath);
 	}
 	ShowWindow(hWnd, SW_MAXIMIZE);

@@ -443,26 +443,6 @@
 				Name="Product"
 				>
 				<Filter
-					Name="Script"
-					>
-					<File
-						RelativePath=".\Product\Script\FaceCatScript.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionBase.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionEx.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionUI.cpp"
-						>
-					</File>
-				</Filter>
-				<Filter
 					Name="Service"
 					>
 					<File
@@ -530,14 +510,6 @@
 						>
 					</File>
 				</Filter>
-			</Filter>
-			<Filter
-				Name="Base"
-				>
-				<File
-					RelativePath=".\CStr.cpp"
-					>
-				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -627,34 +599,6 @@
 						>
 					</File>
 				</Filter>
-				<Filter
-					Name="Script"
-					>
-					<File
-						RelativePath=".\Product\Script\FaceCatScript.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionBase.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionEx.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Product\Script\NFunctionUI.h"
-						>
-					</File>
-				</Filter>
-			</Filter>
-			<Filter
-				Name="Base"
-				>
-				<File
-					RelativePath=".\CStr.h"
-					>
-				</File>
 			</Filter>
 		</Filter>
 		<Filter

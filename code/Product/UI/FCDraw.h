@@ -126,30 +126,83 @@
 #define USERCOLOR116 (Long)-200000000215
 #define USERCOLOR117 (Long)-200000000216
 
+/*
+* 我的颜色
+*/
 class MyColor{
 public:
+	/*
+	* 构造函数
+	*/
     MyColor();
+	/*
+	* 析构函数
+	*/
     virtual ~MyColor();
+	/*
+	* 上次的样式
+	*/
     int m_lastStyle;
+	/*
+	* 用户的颜色
+	*/
     HashMap<double, Long> m_userColors;
+	/*
+	* 获取或设置样式
+	*/
     static int getStyle();
     static void setStyle(int value);
+	/*
+	* 创建颜色
+	*/
     virtual void createColors();
+	/*
+	* 获取用户颜色
+	*/
     virtual Long getUserColor(Long color);
+	/*
+	* 获取或设置反色
+	*/
 	static int getReverseColor();
 	static void setReverseColor(int reverseColor);
+	/*
+	* 获取或设置系统字体
+	*/
 	static void setSystemFont(String value);
     static String getSystemFont();
 };
 
-
+/*
+* 绘图类
+*/
 class FCDraw{
 public:
-	//获取黑色
+	/*
+	* 获取黑色
+	* @param color 颜色
+	*/
 	static Long getUserColor(Long color);
-	//绘制文字
+	/*
+	* 绘制文字
+	* @param paint 绘图对象
+	* @param strText 文字
+	* @param dwPenColor 颜色
+	* @param font 字体
+	* @param x 横坐标
+	* @param y 纵坐标
+	*/
 	static void drawText(FCPaint *paint, String strText, Long dwPenColor, FCFont *font, int x, int y);
-	//绘制带下划线的数字
+	/*
+	* 绘制带下划线的数字
+	* @param paint 绘图对象
+	* @param value 数值
+	* @param digit 保留小数位数
+	* @param font 字体
+	* @param fontColor 颜色
+	* @param zeroAsEmpty 是否不画0
+	* @param x 横坐标
+	* @param y 纵坐标
+	*/
 	static int drawUnderLineNum(FCPaint *paint, double value, int digit, FCFont *font, Long fontColor, bool zeroAsEmpty, int x, int y);
 };
 #endif

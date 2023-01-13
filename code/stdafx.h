@@ -62,7 +62,6 @@ using namespace std;
 #include "..\\facecat\\include\\core\\FCLib.h"
 #include "..\\facecat\\include\\core\\FCLib.h"
 #include "..\\facecat\\include\\sock\\CBase64.h"
-#include "CStr.h"
 #include <comdef.h>
 
 //#include <vld.h>

@@ -6,14 +6,6 @@ static ALikeService *m_aLikeService = 0;
 static bool m_isAppAlive = true;
 static UIXmlEx *m_mainUI = 0;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-DataCenter::DataCenter(){
-}
-
-DataCenter::~DataCenter(){
-}
-
 void DataCenter::dprintf( char *format, ...){
 	static char buf[1024];
 	va_list args;

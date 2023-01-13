@@ -28,20 +28,65 @@ namespace FaceCat
 		* 析构函数
 		*/
 		~FCHttpDataEx();
+		/*
+		* 地址信息
+		*/
 		SOCKADDR_IN m_addr;
+		/*
+		* 包
+		*/
 		char *m_body;
+		/*
+		* 是否关闭
+		*/
         bool m_close;
+		/*
+		* 内容长度
+		*/
 		int m_contentLength;
+		/*
+		* 内容类型
+		*/
         String m_contentType;
+		/*
+		* 方法
+		*/
         String m_method;
+		/*
+		* 参数
+		*/
 		map<String, String> m_parameters;
+		/*
+		* 远程ID
+		*/
 		String m_remoteIP;
+		/*
+		* 远程端口
+		*/
         int m_remotePort;
+		/*
+		* 返回数据
+		*/
 		char* m_resBytes;
+		/*
+		* 返回数据的长度
+		*/
 		int m_resBytesLength;
+		/*
+		* 返回字符
+		*/
 		String m_resStr;
+		/*
+		* 套接字ID
+		*/
 		SOCKET m_socket;
+		/*
+		* 状态码
+		*/
 		int m_statusCode;	
+		/*
+		* 地址
+		*/
         String m_url;
 	};
 
@@ -104,6 +149,7 @@ namespace FaceCat
 	public:
 		/*
 		* 关闭服务
+		* @param socketID 套接字ID
 		*/
 		int close(int socketID);
 		/**

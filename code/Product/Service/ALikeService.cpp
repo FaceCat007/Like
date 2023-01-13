@@ -184,7 +184,7 @@ namespace FaceCat{
 			String str2 = strs.get(j);
 			switch(j){
 			case 0:{
-					data->m_securityCode = FCStrEx::convertSinaCodeToDBCode(str2);
+					data->m_securityCode = ALikeService::convertSinaCodeToDBCode(str2);
 					if(data->m_securityCode.find(L"399") == 0){
 						szIndex = true;
 					}
@@ -379,7 +379,7 @@ namespace FaceCat{
         int sinaCodesSize = (int)sinaCodes.size();
         for (int i = 0; i < sinaCodesSize; i++){
             String postCode = strs.get(i);
-			requestCode += FCStrEx::convertDBCodeToSinaCode(FCTran::StringTostring(postCode));
+			requestCode += ALikeService::convertDBCodeToSinaCode(FCTran::StringTostring(postCode));
             if (i != strLen - 1){
                 requestCode += ",";
             }
@@ -1289,5 +1289,31 @@ namespace FaceCat{
 			InternetCloseHandle(hInet);  
 		return strResponse;  
 	}
+
+	String ALikeService::convertSinaCodeToDBCode(const String& code){
+		int equalIndex = (int)code.find(L"=");
+		int startIndex = (int)code.find(L"var hq_str_") + 11;
+		String securityCode = equalIndex > 0 ?code.substr(startIndex, equalIndex - startIndex) : code;
+		if ((int)securityCode.find(L"sh") == 0 || (int)securityCode.find(L"SH") == 0){
+			securityCode = securityCode.substr(2) + L".SH";
+		}
+		else if ((int)securityCode.find(L"sz") == 0 || (int)securityCode.find(L"SZ") == 0){
+			securityCode = securityCode.substr(2) + L".SZ";
+		}
+		return securityCode;
+	}
+
+	string ALikeService::convertDBCodeToSinaCode(const string& code){
+		string securityCode = code;
+		int index = (int)securityCode.find(".SH");
+		if (index > 0){
+			securityCode = "sh" + securityCode.substr(0, securityCode.find("."));
+		}
+		else{
+			securityCode = "sz" + securityCode.substr(0, securityCode.find("."));
+		}
+		return securityCode;
+	}
 }
+
 

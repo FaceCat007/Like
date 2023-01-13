@@ -37,7 +37,7 @@
 			Name="Release|x64"
 			>
 			<DebugSettings
-				Command="$(TargetPath)"
+				Command=""
 				WorkingDirectory=""
 				CommandArguments=""
 				Attach="false"

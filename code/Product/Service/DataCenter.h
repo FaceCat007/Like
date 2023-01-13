@@ -22,29 +22,43 @@ do{ \
 } while (0)
 
 
-//客户端数据中心
+/*
+* 客户端数据中心
+*/
 class DataCenter{
 private:
 	static void dprintf(char *format, ...);
 	static IXMLDOMDocument* domFromCOM();
 public:
-	DataCenter();
-	virtual ~DataCenter();
-	//程序是否活跃
+	/*
+	* 程序是否活跃
+	*/
 	static bool isAppAlive();
 	static void setAppAlive(bool appAlive);
-	//获取相似服务
+	/*
+	* 获取相似服务
+	*/
 	static ALikeService* getALikeService();
-	//获取启动路径
+	/*
+	* 获取启动路径
+	*/
 	static string getAppPath();
-	//获取用户文件夹
+	/*
+	* 获取用户文件夹
+	*/
 	static string getUserPath();
-	//获取主要界面
+	/*
+	* 获取主要界面
+	*/
 	static UIXmlEx* getMainUI();
-	//设置主要界面
+	/*
+	* 设置主要界面
+	*/
 	static void setMainUI(UIXmlEx *mainUI);
 public:
-	//启动服务
+	/*
+	* 启动服务
+	*/
 	static void startService();
 };
 #endif

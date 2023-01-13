@@ -1,5 +1,4 @@
 #include "..\\..\\stdafx.h"
-#include "..\\..\\CStr.h"
 #include "MultiThreadWork.h"
 
 namespace FaceCat{
